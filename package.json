@@ -1,0 +1,11 @@
+{
+  "name": "gst-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GST Calculator Android app (Capacitor)",
+  "dependencies": {
+    "@capacitor/android": "6.2.1",
+    "@capacitor/cli": "6.2.1",
+    "@capacitor/core": "6.2.1"
+  }
+}

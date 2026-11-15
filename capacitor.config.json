@@ -1,0 +1,12 @@
+{
+  "appId": "com.gstcalc.app",
+  "appName": "GST Calculator",
+  "webDir": "www",
+  "backgroundColor": "#0a1311",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "backgroundColor": "#0a1311"
+  }
+}
