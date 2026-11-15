@@ -109,8 +109,58 @@ jobs:
           for name in ("ic_launcher.xml", "ic_launcher_round.xml"):
               (res / "mipmap-anydpi-v26" / name).write_text(icon, encoding="utf-8")
 
+          # same signing key + rising version number on every build, so new APKs install over the old app
+          g = pathlib.Path("android/app/build.gradle")
+          t = g.read_text(encoding="utf-8")
+          t = t.replace('versionCode 1', 'versionCode Integer.parseInt(System.getenv("GITHUB_RUN_NUMBER") ?: "1")', 1)
+          t = t.replace('versionName "1.0"', 'versionName "1.0.${System.getenv("GITHUB_RUN_NUMBER") ?: "0"}"', 1)
+          t = t.replace('android {\n    namespace', 'android {\n    signingConfigs {\n        debug {\n            storeFile file("gst-signing.jks")\n            storePassword "gstcalc123"\n            keyAlias "gstkey"\n            keyPassword "gstcalc123"\n            storeType "jks"\n        }\n    }\n    namespace', 1)
+          g.write_text(t, encoding="utf-8")
           print("Android project patched.")
           PY
+
+      - name: Add fixed signing key
+        run: |
+          base64 -d > android/app/gst-signing.jks <<'EOF'
+          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
+          EOF
 
       - name: Copy web files into Android project
         run: npx cap sync android
