@@ -63,7 +63,7 @@ jobs:
           # 1) colors
           (res / "values" / "gst_colors.xml").write_text(
               '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n'
-              '    <color name="gst_bg">#0A1311</color>\n'
+              '    <color name="gst_bg">#1B1113</color>\n'
               '</resources>\n', encoding="utf-8")
 
           # 2) theme: dark status bar + navigation bar, dark splash background
@@ -88,19 +88,34 @@ jobs:
                             'android:launchMode="singleTask"\n            android:screenOrientation="portrait"', 1)
           manifest.write_text(m, encoding="utf-8")
 
-          # 4) launcher icon (adaptive): dark background + a % sign
-          (res / "drawable" / "ic_gst_foreground.xml").write_text(
-              '<?xml version="1.0" encoding="utf-8"?>\n'
-              '<vector xmlns:android="http://schemas.android.com/apk/res/android"\n'
-              '    android:width="108dp" android:height="108dp"\n'
-              '    android:viewportWidth="108" android:viewportHeight="108">\n'
-              '    <path android:strokeColor="#3CC2A8" android:strokeWidth="5" android:strokeLineCap="round"\n'
-              '        android:pathData="M64,36 L44,72"/>\n'
-              '    <path android:strokeColor="#3CC2A8" android:strokeWidth="5"\n'
-              '        android:pathData="M37,42 a6.5,6.5 0 1,0 13,0 a6.5,6.5 0 1,0 -13,0"/>\n'
-              '    <path android:strokeColor="#F0B36A" android:strokeWidth="5"\n'
-              '        android:pathData="M57.5,66 a6.5,6.5 0 1,0 13,0 a6.5,6.5 0 1,0 -13,0"/>\n'
-              '</vector>\n', encoding="utf-8")
+          # 4) launcher icon (adaptive): % keycap with + - x = keys on a dark retro background
+          (res / "drawable" / "ic_gst_foreground.xml").write_text('''<?xml version="1.0" encoding="utf-8"?>
+          <vector xmlns:android="http://schemas.android.com/apk/res/android"
+              android:width="108dp" android:height="108dp"
+              android:viewportWidth="108" android:viewportHeight="108">
+              <group android:pivotX="54" android:pivotY="54" android:scaleX="1.1" android:scaleY="1.1">
+              <path android:fillColor="#2a181c" android:pathData="M8,54 a46,46 0 1,0 92,0 a46,46 0 1,0 -92,0"/>
+              <path android:fillColor="#0d0708" android:pathData="M36.5,58.5 a17.5,17.5 0 1,0 35.0,0 a17.5,17.5 0 1,0 -35.0,0"/>
+              <path android:fillColor="#e2c39c" android:pathData="M36.5,54 a17.5,17.5 0 1,0 35.0,0 a17.5,17.5 0 1,0 -35.0,0"/>
+              <path android:fillColor="#f3dcc0" android:pathData="M38.8,54 a15.2,15.2 0 1,0 30.4,0 a15.2,15.2 0 1,0 -30.4,0"/>
+              <path android:strokeColor="#3a2218" android:strokeWidth="3.3" android:strokeLineCap="round" android:pathData="M58.6,44.6 L49.4,63.4"/>
+              <path android:strokeColor="#3a2218" android:strokeWidth="2.8" android:strokeLineCap="round" android:pathData="M45.800000000000004,47.2 a3.4,3.4 0 1,0 6.8,0 a3.4,3.4 0 1,0 -6.8,0"/>
+              <path android:strokeColor="#3a2218" android:strokeWidth="2.8" android:strokeLineCap="round" android:pathData="M55.4,60.8 a3.4,3.4 0 1,0 6.8,0 a3.4,3.4 0 1,0 -6.8,0"/>
+              <path android:fillColor="#0d0708" android:pathData="M28.8,38.2 a7.2,7.2 0 1,0 14.4,0 a7.2,7.2 0 1,0 -14.4,0"/>
+              <path android:fillColor="#eebb44" android:pathData="M28.8,36 a7.2,7.2 0 1,0 14.4,0 a7.2,7.2 0 1,0 -14.4,0"/>
+              <path android:strokeColor="#3a2218" android:strokeWidth="1.9" android:strokeLineCap="round" android:pathData="M36,32.4 V39.6 M32.4,36 H39.6"/>
+              <path android:fillColor="#0d0708" android:pathData="M64.8,38.2 a7.2,7.2 0 1,0 14.4,0 a7.2,7.2 0 1,0 -14.4,0"/>
+              <path android:fillColor="#b85a35" android:pathData="M64.8,36 a7.2,7.2 0 1,0 14.4,0 a7.2,7.2 0 1,0 -14.4,0"/>
+              <path android:strokeColor="#fff0dc" android:strokeWidth="1.9" android:strokeLineCap="round" android:pathData="M68.4,36 H75.6"/>
+              <path android:fillColor="#0d0708" android:pathData="M28.8,74.2 a7.2,7.2 0 1,0 14.4,0 a7.2,7.2 0 1,0 -14.4,0"/>
+              <path android:fillColor="#d9a273" android:pathData="M28.8,72 a7.2,7.2 0 1,0 14.4,0 a7.2,7.2 0 1,0 -14.4,0"/>
+              <path android:strokeColor="#3a2218" android:strokeWidth="1.9" android:strokeLineCap="round" android:pathData="M33.4,69.4 L38.6,74.6 M38.6,69.4 L33.4,74.6"/>
+              <path android:fillColor="#0d0708" android:pathData="M64.8,74.2 a7.2,7.2 0 1,0 14.4,0 a7.2,7.2 0 1,0 -14.4,0"/>
+              <path android:fillColor="#ffffff" android:pathData="M64.8,72 a7.2,7.2 0 1,0 14.4,0 a7.2,7.2 0 1,0 -14.4,0"/>
+              <path android:strokeColor="#2b1a1d" android:strokeWidth="1.9" android:strokeLineCap="round" android:pathData="M68.4,70.6 H75.6 M68.4,73.6 H75.6"/>
+              </group>
+          </vector>
+          ''', encoding="utf-8")
           icon = ('<?xml version="1.0" encoding="utf-8"?>\n'
                   '<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">\n'
                   '    <background android:drawable="@color/gst_bg"/>\n'
